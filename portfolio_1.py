@@ -12,6 +12,11 @@ class Cheking_number:
         except ValueError:
             print('it is not valid input')
             return False
+    def check_0_for_both(self):
+        if self.number1==0 and self.number2==0:
+            return False
+        return True
+        
     
 class EuclideanAlgorithm:
     def __init__(self,number1,number2):
@@ -43,9 +48,12 @@ class Runner:
         checker=Cheking_number(self.number1, self.number2)
         if not checker.check_valid_number():
             return "Not valid input"
-        gcd_calculate=EuclideanAlgorithm(checker.number1, checker.number2)
-        gcd_calculate.devisor()
-        print(f"{gcd_calculate.declare_common_devisor()}")
+        elif not checker.check_0_for_both():
+            return "Not valid input"
+        else:
+            gcd_calculate=EuclideanAlgorithm(checker.number1, checker.number2)
+            gcd_calculate.devisor()
+            print(f"{gcd_calculate.declare_common_devisor()}")
         
     
 print("To find the Greatest Common Devisor(GCD)!")
