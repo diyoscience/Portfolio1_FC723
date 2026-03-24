@@ -3,20 +3,19 @@ class Cheking_number:
     def __init__(self,number1,number2):
         self.number1=number1
         self.number2=number2
-        
+      
     def check_valid_number(self):
         try:
             self.number1=int(self.number1)
             self.number2=int(self.number2)
             return True
         except ValueError:
-            print('it is not valid input')
             return False
-    def check_0_for_both(self):
-        if self.number1==0 and self.number2==0:
-            return False
-        return True
         
+    def check_positive(self):
+        if self.number1>0 and self.number2>0:
+            return True
+        False
     
 class EuclideanAlgorithm:
     def __init__(self,number1,number2):
@@ -47,9 +46,9 @@ class Runner:
     def run_function(self):
         checker=Cheking_number(self.number1, self.number2)
         if not checker.check_valid_number():
-            return "Not valid input"
-        elif not checker.check_0_for_both():
-            return "Not valid input"
+            return print("Not valid input")
+        elif not checker.check_positive():
+            return print("Not valid input")
         else:
             gcd_calculate=EuclideanAlgorithm(checker.number1, checker.number2)
             gcd_calculate.devisor()
